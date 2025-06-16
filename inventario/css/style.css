@@ -1,0 +1,167 @@
+:root {
+    --mi-color1: var(--bulma-primary);
+    --mi-color2: var(--bulma-info);
+    --mi-color3: var(--bulma-link);
+    --mi-color4: var(--bulma-info-90);
+    --mi-color5: var(--bulma-danger);
+    --mi-color6: var(--bulma-warning);
+    --mi-color7: #4a4a4a;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*navbar*/
+html body .navbar .navbar-link::after {
+    border-color:var(--bulma-info) !important;
+}
+
+.navbar-burger {
+    background-color: transparent;
+    box-shadow: none;
+}
+.navbar-burger span {
+    background-color: var(--bulma-info);
+}
+
+.navbar-burger:hover {
+    background-color: #eceeee;;
+
+}
+
+/*login*/
+.main-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container > .login,
+.main-container > .hero-body {/*404*/
+    height: auto;
+    width: 100%;
+    max-width: 400px;
+    min-width: 300px;
+    text-align: center;
+}
+
+/*para algunos formularios que estan en una linea*/
+.form-inline {
+    display: inline-flex;
+}
+
+/*Registro usuario*/
+.form-register {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.button-custom {
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    border-radius: 9999px; /* como is-rounded */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+}
+
+.button-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.button-save {
+    background-color: var(--mi-color1);
+    color: white;
+}
+
+.button-cancel {
+    background-color: var(--mi-color2);
+    border-radius: 20px;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+.button-cancelar:hover {
+    background-color: #33c1f3;
+}
+
+.button-account {
+    background-color: #00c4a7; /* verde azulado */
+    
+}
+
+.button-exit {
+    background-color: #48c7f0;
+    color: white;
+}
+
+.input {
+    background-color: #ffffff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    color: #363636;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.input:focus {
+    border-color: var(--mi-color1);
+    box-shadow: 0 0 0 3px rgba(0, 209, 178, 0.2);
+    outline: none;
+}
+
+.label {
+    color: var(--text-gray);
+    font-weight: 600;
+}
+
+.control.has-icons-right .icon.is-right i {
+    color: var(--mi-color2);
+}
+
+/* Centrado y espaciado botones */
+.column.is-full.has-text-centered {
+    margin-top: 2rem;
+}
+
+/* Lista usuarios */
+
+.table-container {
+    border-radius: 10px;
+}
+
+.icon-link {
+    font-size: 1.2em;
+    margin: 0 0.3rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+    display: inline-block;
+}
+
+.icon-link:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.pagination-link.is-current {
+    background-color: hsl(171, 100%, 41%); /* Bulma 'is-info' */
+    color: white;
+    border-radius: 50%;
+    font-weight: 600;
+    border: none;
+}
+.pagination-link:hover {
+    background-color: hsl(171, 100%, 96%);
+    color: hsl(171, 100%, 41%);
+}
