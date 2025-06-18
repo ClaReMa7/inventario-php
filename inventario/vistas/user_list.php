@@ -8,6 +8,22 @@
     <?php 
         require_once './php/main.php';
 
+        // Mostrar mensaje si existe
+        if (isset($_SESSION['mensaje']) && isset($_SESSION['mensaje']['tipo'])) {
+            $tipo = $_SESSION['mensaje']['tipo'];
+            $titulo = $_SESSION['mensaje']['titulo'];
+            $contenido = $_SESSION['mensaje']['contenido'];
+
+            echo '
+                    <div class="notification '.$tipo.' is-info is-light has-text-centered">
+                        <strong>'.strtoupper($titulo).'</strong><br>
+                        '.$contenido.'
+                    </div>
+
+                ';
+                unset($_SESSION['mensaje']); // Limpiamos el mensaje después de mostrarlo
+        }
+
         // Eliminar usuario
         if (isset($_GET['user_id_del'])) {
             require_once "./php/user_delete.php";

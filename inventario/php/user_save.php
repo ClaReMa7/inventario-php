@@ -124,6 +124,7 @@
                     </div>
                 </div>
             ';
+            header("Refresh; url=index.php?vista=user_new");
             exit();
         }
         $querie_usuario = null;
@@ -141,6 +142,7 @@
                     </div>
                 </div>
             ';
+            header("Refresh: 2; url=index.php?vista=user_new");
             exit();
         } else {
             // Encriptando la contraseña
@@ -174,6 +176,8 @@
                     </div>
                 </div>
             ';
+            header("Refresh: 2; url=index.php?vista=user_new");
+            exit();
 
         } else {
             echo '
