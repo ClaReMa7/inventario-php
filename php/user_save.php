@@ -8,11 +8,11 @@
     $user_name = limpiar_cadena($_POST["user"]);
     $email = limpiar_cadena($_POST["user_email"]);
 
-    $paswdord = limpiar_cadena($_POST["user_passw"]);
+    $password = limpiar_cadena($_POST["user_passw"]);
     $password_repeat = limpiar_cadena($_POST["user_passw_repeat"]);
 
     // Validación campos obligatorios
-    if ($full_name == "" || $lastname == "" || $user_name == "" || $email == "" || $paswdord == "" || $password_repeat == "") {
+    if ($full_name == "" || $lastname == "" || $user_name == "" || $email == "" || $password == "" || $password_repeat == "") {
         echo '
             <div class="columns is-centered">
                 <div class="column is-half">
@@ -56,7 +56,7 @@
         exit();
     }
 
-    if (verficar_datos("[a-zA-Z0-9$@.\-]{7,100}", $paswdord) || verficar_datos("[a-zA-Z0-9$@.\-]{7,100}", $password_repeat)) {
+    if (verficar_datos("[a-zA-Z0-9$@.\-]{7,100}", $password) || verficar_datos("[a-zA-Z0-9$@.\-]{7,100}", $password_repeat)) {
         echo '
             <div class="columns is-centered">
                 <div class="column is-half">
@@ -131,7 +131,7 @@
         $connect_usuario = null; 
 
         // Verificar contraseñas iguales
-        if ($paswdord != $password_repeat) {
+        if ($password != $password_repeat) {
             echo '
                 <div class="columns is-centered">
                     <div class="column is-half">
@@ -146,7 +146,7 @@
             exit();
         } else {
             // Encriptando la contraseña
-            $password = password_hash($paswdord, PASSWORD_BCRYPT, 
+            $password = password_hash($password, PASSWORD_BCRYPT, 
         ["cost" => 10]);
         }
 
