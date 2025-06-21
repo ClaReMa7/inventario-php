@@ -5,7 +5,6 @@
     --mi-color4: var(--bulma-info-90);
     --mi-color5: var(--bulma-danger);
     --mi-color6: var(--bulma-warning);
-    --mi-color7: #4a4a4a;
 }
 
 body, html {
@@ -69,19 +68,15 @@ html body .navbar .navbar-link::after {
 .button-custom {
     padding: 0.5rem 1.5rem;
     font-weight: 600;
-    border-radius: 9999px; /* como is-rounded */
+    border-radius: 9999px; /* is-rounded */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: all 0.2s ease;
+    color: white;
 }
 
 .button-custom:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
-
-.button-save {
-    background-color: var(--mi-color1);
-    color: white;
 }
 
 .button-cancel {
@@ -95,14 +90,9 @@ html body .navbar .navbar-link::after {
     background-color: #33c1f3;
 }
 
-.button-account {
-    background-color: #00c4a7; /* verde azulado */
-    
-}
 
 .button-exit {
     background-color: #48c7f0;
-    color: white;
 }
 
 .input {
@@ -136,7 +126,7 @@ html body .navbar .navbar-link::after {
     margin-top: 2rem;
 }
 
-/* Lista usuarios */
+/* Lista usuarios-categorias-productos */
 
 .table-container {
     border-radius: 10px;
@@ -153,6 +143,18 @@ html body .navbar .navbar-link::after {
     transform: scale(1.2);
     cursor: pointer;
 }
+
+.fa-eye{
+    color: hsl(274, 100%, 70%);
+}
+
+.button-reload {
+    background-color:  hsl(274, 100%, 70%) !important;
+}
+
+.button-reload:hover {
+    background-color: hsl(274, 100%, 65%) !important;
+}   
 
 .pagination-link.is-current {
     background-color: hsl(171, 100%, 41%); /* Bulma 'is-info' */

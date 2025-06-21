@@ -3,15 +3,15 @@
     $user_table = "";
 
     if (isset($search) && $search != '') {
-        $query_user_list = "SELECT * FROM usuario WHERE  ((usuario_id != '".$_SESSION['id']."') AND (usuario_nombre LIKE '%$search%' OR usuario_apellido LIKE '%$search%' OR usuario_usuario LIKE '%$search%' OR usuario_email LIKE '%$search%')) ORDER BY usuario_nombre ASC LIMIT $pageStart, $registers_page";
+        $query_user_list = "SELECT * FROM categoria WHERE categoria_nombre LIKE '%$search%' OR categoria_ubicacion LIKE '%$search%' ORDER BY categoria_nombre ASC LIMIT $pageStart, $registers_page";
 
-        $query_total = "SELECT COUNT(usuario_id) FROM usuario WHERE ((usuario_id != '".$_SESSION['id']."') AND (usuario_nombre LIKE '%$search%' OR usuario_apellido LIKE '%$search%' OR usuario_usuario LIKE '%$search%' OR usuario_email LIKE '%$search%'))";
+        $query_total = "SELECT COUNT(categoria_id) FROM categoria WHERE categoria_nombre LIKE '%$search%' OR categoria_ubicacion LIKE '%$search%'";
 
     } else {    
         //query de paginación de la tabla  usuarios
-        $query_user_list = "SELECT * FROM usuario WHERE  usuario_id != '".$_SESSION['id']."' ORDER BY usuario_nombre ASC LIMIT $pageStart, $registers_page";
+        $query_user_list = "SELECT * FROM categoria ORDER BY categoria_nombre ASC LIMIT $pageStart, $registers_page";
 
-        $query_total = "SELECT COUNT(usuario_id) FROM usuario WHERE  usuario_id != '".$_SESSION['id']."' ";
+        $query_total = "SELECT COUNT(categoria_id) FROM categoria";
 
     }
 
@@ -30,10 +30,9 @@
             <thead>
                 <tr class="has-text-centered">
                     <th class="has-text-centered">#</th>
-                    <th class="has-text-centered">Nombres</th>
-                    <th class="has-text-centered">Apellidos</th>
-                    <th class="has-text-centered">Usuario</th>
-                    <th class="has-text-centered">Email</th>
+                    <th class="has-text-centered">Nombre</th>
+                    <th class="has-text-centered">Ubicación</th>
+                    <th class="has-text-centered">Producto</th>
                     <th colspan="2" class="has-text-centered">Acciones</th>
                 </tr>
             </thead>
@@ -47,15 +46,16 @@
             $user_table .= '
                 <tr class="has-text-centered" >
 					<td>'.$counter.'</td>
-                    <td>'.$row['usuario_nombre'].'</td>
-                    <td>'.$row['usuario_apellido'].'</td>
-                    <td>'.$row['usuario_usuario'].'</td>
-                    <td>'.$row['usuario_email'].'</td>
+                    <td>'.$row['categoria_nombre'].'</td>
+                    <td>'.substr($row['categoria_ubicacion'], 0, 20).'</td>
                     <td>
-                        <a href="index.php?vista=user_update&user_id_up='.$row['usuario_id'].'" class="has-text-info icon-link edit-icon" title="Editar"><i class="fa-solid fa-user-pen"></i></a>
+                        <a href="index.php?vista=product_category&_id='.$row['categoria_id'].'" class=" icon-link  view-icon "><i class="fa-solid fa-eye"></i></i></a>
+                    </td> 
+                    <td>
+                        <a href="index.php?vista=category_update&category_id_up='.$row['categoria_id'].'" class="has-text-info icon-link edit-icon"><i class="fa-solid fa-pen"></i></a>
                     </td>
                     <td>
-                        <a href="'.$url_list.$page_list.'&user_id_del='.$row['usuario_id'].'" class=" has-text-danger icon-link delete-icon" title="Eliminar"><i class="fa-solid fa-trash"></i></a>
+                        <a href="'.$url_list.$page_list.'&category_id_del='.$row['categoria_id'].'" class=" has-text-danger icon-link delete-icon"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
             ';
@@ -66,9 +66,9 @@
     } else {
         if ($total_registers >= 1) {
             $user_table .= '
-                <tr class="has-text-centered" >
+                <tr class="has-text-centered " >
                     <td colspan="7">
-                        <a href="'.$url_list.'1" class="button button-reload button-custom  is-small mt-4 mb-4">
+                        <a href="'.$url_list.'1" class=" button-reload button button-custom is-small mt-4 mb-4">
                             Haga clic acá para recargar el listado
                         </a>
                     </td>
@@ -93,7 +93,7 @@
 
     if (count($rows) >= 1) {
         $user_table .= '
-            <p class="has-text-right">Mostrando usuarios <strong>'.$initial_pager.'</strong> al <strong>'.$final_pager.'</strong> de un <strong>total de '.$total_registers.'</strong></p>
+            <p class="has-text-right">Mostrando Categorías <strong>'.$initial_pager.'</strong> al <strong>'.$final_pager.'</strong> de un <strong>total de '.$total_registers.'</strong></p>
         ';
 
     }

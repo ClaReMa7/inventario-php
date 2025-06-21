@@ -82,7 +82,7 @@
 
     <!-- Botones -->
     <div class="column is-full has-text-centered">
-            <button type="submit" class="button button-custom button-save is-rounded">Guardar</button>
+            <button type="submit" class="button button-custom button-save is-primary is-rounded">Guardar</button>
 
             <button class="button button-custom button-cancel is-rounded" type="reset">Cancelar</button>
     </div>

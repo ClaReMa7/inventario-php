@@ -150,11 +150,10 @@
         ["cost" => 10]);
         }
 
-        // Guardando datos 
+        // Guardando datos en BD
         try {
         $save_user = db_connection();
-        $sql = "INSERT INTO usuario(usuario_nombre, usuario_apellido, usuario_usuario, usuario_clave, usuario_email) VALUES(:usuario_nombre, :usuario_apellido, :usuario_usuario, :usuario_clave, :usuario_email)"; 
-        $query = $save_user->prepare($sql);
+        $sql = $save_user->prepare("INSERT INTO usuario(usuario_nombre, usuario_apellido, usuario_usuario, usuario_clave, usuario_email) VALUES(:usuario_nombre, :usuario_apellido, :usuario_usuario, :usuario_clave, :usuario_email)"); 
 
         $marker = [
             ":usuario_nombre" => $full_name,
@@ -163,9 +162,9 @@
             ":usuario_clave" => $password,
             ":usuario_email" => $email
         ];
-        $query->execute($marker);
+        $sql->execute($marker);
 
-        if ($query->rowCount() == 1) {
+        if ($sql->rowCount() == 1) {
             echo '
                 <div class="columns is-centered">
                     <div class="column is-half">
