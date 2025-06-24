@@ -55,7 +55,7 @@
                         <a href="index.php?vista=category_update&category_id_up='.$row['categoria_id'].'" class="has-text-info icon-link edit-icon"><i class="fa-solid fa-pen"></i></a>
                     </td>
                     <td>
-                        <a href="'.$url_list.$page_list.'&category_id_del='.$row['categoria_id'].'" class=" has-text-danger icon-link delete-icon"><i class="fa-solid fa-trash"></i></a>
+                        <a href="'.$url.$page_list.'&category_id_del='.$row['categoria_id'].'" class=" has-text-danger icon-link delete-icon"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
             ';
@@ -68,7 +68,7 @@
             $user_table .= '
                 <tr class="has-text-centered " >
                     <td colspan="7">
-                        <a href="'.$url_list.'1" class=" button-reload button button-custom is-small mt-4 mb-4">
+                        <a href="'.$url.'1" class=" button-reload button button-custom is-small mt-4 mb-4">
                             Haga clic acá para recargar el listado
                         </a>
                     </td>
@@ -102,7 +102,7 @@
     echo $user_table;
 
     if (count($rows) >= 1) {
-        echo paginador_tables($page_list, $pages, $url_list, 7);
+        echo paginador_tables($page_list, $pages, $url, 7);
     }
 
 ?>

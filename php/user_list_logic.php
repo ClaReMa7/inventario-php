@@ -52,10 +52,10 @@
                     <td>'.$row['usuario_usuario'].'</td>
                     <td>'.$row['usuario_email'].'</td>
                     <td>
-                        <a href="index.php?vista=user_update&user_id_up='.$row['usuario_id'].'" class="has-text-info icon-link edit-icon" title="Editar"><i class="fa-solid fa-user-pen"></i></a>
+                        <a href="index.php?vista=user_update&user_id_up='.$row['usuario_id'].'" class="has-text-info icon-link edit-icon"><i class="fa-solid fa-user-pen"></i></a>
                     </td>
                     <td>
-                        <a href="'.$url_list.$page_list.'&user_id_del='.$row['usuario_id'].'" class=" has-text-danger icon-link delete-icon" title="Eliminar"><i class="fa-solid fa-trash"></i></a>
+                        <a href="'.$url_list.$page_list.'&user_id_del='.$row['usuario_id'].'" class=" has-text-danger icon-link delete-icon"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
             ';

@@ -76,7 +76,7 @@ html body .navbar .navbar-link::after {
 
 .button-custom:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.20);
 }
 
 .button-cancel {
@@ -93,6 +93,13 @@ html body .navbar .navbar-link::after {
 
 .button-exit {
     background-color: #48c7f0;
+}
+
+.btn-search {
+    background: hsl(274, 100%, 77%);
+}
+.btn-search:hover {
+    background-color: hsl(274, 100%, 70%);
 }
 
 .input {
