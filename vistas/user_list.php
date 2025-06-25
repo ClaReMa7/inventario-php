@@ -15,11 +15,14 @@
             $contenido = $_SESSION['mensaje']['contenido'];
 
             echo '
-                    <div class="notification '.$tipo.' is-info is-light has-text-centered">
-                        <strong>'.strtoupper($titulo).'</strong><br>
-                        '.$contenido.'
+                <div class="columns is-centered">
+                    <div class="column is-half">
+                        <div class="notification '.$tipo.' is-info is-light has-text-centered">
+                            <strong>'.strtoupper($titulo).'</strong><br>
+                            '.$contenido.'
+                        </div> 
                     </div>
-
+                </div>
                 ';
                 unset($_SESSION['mensaje']); // Limpiamos el mensaje después de mostrarlo
         }

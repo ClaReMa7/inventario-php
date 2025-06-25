@@ -38,10 +38,10 @@
                     <a class="navbar-link">Productos</a>
 
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">Nuevo</a>             </a>
-                        <a class="navbar-item">Lista</a>             </a>
-                        <a class="navbar-item">Por categoria</a>             </a>
-                        <a class="navbar-item">Buscar</a>             </a>
+                        <a class="navbar-item" href="index.php?vista=product_new">Nuevo</a>             </a>
+                        <a class="navbar-item" href="index.php?vista=product_list">Lista</a>             </a>
+                        <a class="navbar-item" href="index.php?vista=product_category" >Por categoria</a>             </a>
+                        <a class="navbar-item" href="index.php?vista=product_search">Buscar</a>             </a>
                     </div>
                 </div>
         </div>

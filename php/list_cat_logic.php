@@ -55,7 +55,8 @@
                         <a href="index.php?vista=category_update&category_id_up='.$row['categoria_id'].'" class="has-text-info icon-link edit-icon"><i class="fa-solid fa-pen"></i></a>
                     </td>
                     <td>
-                        <a href="'.$url.$page_list.'&category_id_del='.$row['categoria_id'].'" class=" has-text-danger icon-link delete-icon"><i class="fa-solid fa-trash"></i></a>
+                        <a href="'.$url.$page_list.'&category_id_del='.$row['categoria_id'].' " class=" has-text-danger icon-link delete-icon  confirm-delete-category"><i class="fa-solid fa-trash"></i>
+                        </a>
                     </td>
                 </tr>
             ';

@@ -1,17 +1,42 @@
 <?php
     require_once 'main.php';
 
+    $id = limpiar_cadena($_POST['categoria_id']);
+
+    // Verificar la categoria
+    $check_categoria = db_connection();
+    $check_categoria = $check_categoria->prepare("SELECT * FROM categoria WHERE categoria_id = :id");
+    $check_categoria->execute([':id' => $id]);
+
+    if ($check_categoria->rowCount() <= 0) {
+        echo '
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <div class="alert alert-danger" role="alert">
+                        <strong>¡Ocurrido un error inesperado!:</strong> La CATEGORIA no existe o ha sido eliminada.
+                    </div>
+                </div>
+            </div>
+            ';
+        exit();
+
+    } else {
+        $datos = $check_categoria->fetch();
+
+    }
+    $check_categoria = null;
+
     # Almacenando datos del formulario
     $name_category = limpiar_cadena($_POST["categoria_nombre"]);
     $ubication = limpiar_cadena($_POST["categoria_ubicacion"]);
 
-    // Validación campos obligatorios
+    # Validación campos obligatorios
     if ($name_category == "") {
         echo '
             <div class="columns is-centered">
                 <div class="column is-half">
                     <div class="notification is-danger is-light has-text-centered">
-                    <strong>¡Ocurrió un error inesperado!</strong><br>
+                    <strong>¡Ocurrido un error inesperado!</strong><br>
                         No has llenado todos los campos que son obligatorios.
                     </div>
                 </div>
@@ -34,6 +59,7 @@
             </div>
         ';
         exit();
+
     } else if ($ubication != "") {
         if (verficar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{5,150}", $ubication)) {
             echo '
@@ -51,6 +77,8 @@
     }
 
     //Validación nombre de categoría
+    if ($name_category != $datos['categoria_nombre']) {
+
         $connect_category = db_connection();
         $check_category_name = $connect_category->prepare("SELECT categoria_nombre FROM categoria WHERE categoria_nombre = :neme_category");
         $check_category_name->execute([':neme_category' => $name_category]);
@@ -66,63 +94,52 @@
                     </div>
                 </div>
             ';
-            header("Refresh; url=index.php?vista=category_list");
             exit();
         }
         $check_category_name = null;
         $connect_category = null; 
+    }
 
-        // Guardar datos en la base de datos
-        try {
-        $save_category = db_connection();
-        $query_category = $save_category->prepare("INSERT INTO categoria (categoria_nombre, categoria_ubicacion) VALUES (:name_category, :ubication_category)"); 
+    
+    # Actualizar datos #
+    $update_cat = db_connection();
+    $update_cat = $update_cat->prepare("UPDATE categoria SET 
+        categoria_nombre = :name_cat, 
+        categoria_ubicacion = :ubicacion
+        WHERE categoria_id = :id");
 
-        $marker = [
-            ":name_category" => $name_category,
-            ":ubication_category" => $ubication
-        ];
+        $marker =([
+        ':name_cat' => $name_category,
+        ':ubicacion' => $ubication,
+        ':id' => $id
+    ]);;
 
-        $query_category->execute($marker);
-
-        // Verificar si se guardó correctamente
-        if ($query_category->rowCount() == 1) {
-            echo '
-                <div class="columns is-centered">
-                    <div class="column is-half">
-                        <div class="notification is-info is-light has-text-centered">
-                        <strong>¡CATEGORIA REGISTRADA!</strong><br>
-                            La categoria se ha registrado correctamente.
-                        </div>
+    if ($update_cat ->execute($marker)) {
+        echo '
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <div class="notification is-info is-light has-text-centered">
+                        <strong>¡Actualización exitosa!</strong><br>
+                        Los datos de la categoría se han actualizado correctamente.
                     </div>
                 </div>
-            ';
-            header("Refresh: 2; url=index.php?vista=category_new");
-            exit();
-
-        } else {
-            echo '
-                <div class="columns is-centered">
-                    <div class="column is-half">
-                        <div class="notification is-danger is-light has-text-centered">
+            </div>
+        ';
+        
+    } else {
+        echo '
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <div class="notification is-danger is-light has-text-centered">
                         <strong>¡Ocurrido un error inesperado!</strong><br>
-                            No se ha registrado la categoria. Por favor intente nuevamente.
-                        </div>
+                        No se ha podido actualizar los datos de la categoría, por favor intente nuevamente.
                     </div>
                 </div>
-            ';
+            </div>
+        ';
+    }
+    
+    $update_cat = null;
 
-        }
-        $save_category = null;
-        } catch (PDOException $e) {
-            echo '
-                <div class="columns is-centered">
-                    <div class="column is-half">
-                        <div class="notification is-danger is-light has-text-centered">
-                        <strong>Error de base de datos:</strong><br>
-                            ' . $e->getMessage() . '
-                        </div>
-                    </div>
-                </div>
-            ';
-        }
+
 

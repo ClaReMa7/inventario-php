@@ -47,6 +47,12 @@
     </div>
 
     <?php 
+      // Eliminar categoria
+        if (isset($_GET['category_id_del'])) {
+            require_once "./php/category_delete.php";
+
+        }
+
     // Paginación de la tabla
         if (!isset($_GET['page'])) {
             $page_list = 1; 

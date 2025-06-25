@@ -35,7 +35,7 @@
                 'contenido' => 'No hemos podido eliminar el usuario, por favor intenta nuevamente.'
             ];
             }
-            //$delete_user = null;
+            $delete_user = null;
 
         } else {
             $_SESSION['mensaje'] = [
