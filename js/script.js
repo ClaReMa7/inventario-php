@@ -41,6 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
             placement: 'bottom',
     });
 
+        tippy('.image-icon', {
+            content: 'Imagen',
+            theme: 'light',
+            animation: 'scale',
+            placement: 'bottom',
+    });
+
+
+
         // Confirmación eliminar USUARIO
         document.querySelectorAll('.confirm-delete-user').forEach(link => {
             link.addEventListener('click', function(e) {

@@ -46,7 +46,7 @@
                 <label>Categoría</label><br>
                 <div class="select is-rounded">
                     <select name="producto_categoria">
-                        <option value="" selected="">Seleccione una opción</option>
+                        <option class="option" value="" selected="">Seleccione una opción</option>
                         <?php 
                             $categories = db_connection();
                             $categories = $categories->prepare("SELECT * FROM categoria");

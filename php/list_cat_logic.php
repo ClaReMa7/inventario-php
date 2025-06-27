@@ -43,25 +43,38 @@
         $counter = $pageStart + 1;
         $initial_pager = $pageStart + 1;
         foreach ($rows as $row) {
-            $user_table .= '
-                <tr class="has-text-centered" >
-					<td>'.$counter.'</td>
-                    <td>'.$row['categoria_nombre'].'</td>
-                    <td>'.substr($row['categoria_ubicacion'], 0, 20).'</td>
-                    <td>
-                        <a href="index.php?vista=product_category&_id='.$row['categoria_id'].'" class=" icon-link  view-icon "><i class="fa-solid fa-eye"></i></i></a>
-                    </td> 
-                    <td>
-                        <a href="index.php?vista=category_update&category_id_up='.$row['categoria_id'].'" class="has-text-info icon-link edit-icon"><i class="fa-solid fa-pen"></i></a>
-                    </td>
-                    <td>
-                        <a href="'.$url.$page_list.'&category_id_del='.$row['categoria_id'].' " class=" has-text-danger icon-link delete-icon  confirm-delete-category"><i class="fa-solid fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-            ';
-            $counter++;
-        }
+    $user_table .= '
+        <tr class="has-text-centered">
+            <td>' . $counter . '</td>
+            <td>' . $row['categoria_nombre'] . '</td>
+            <td>' . substr($row['categoria_ubicacion'], 0, 20) . '</td>
+            
+            <!-- Columna de PRODUCTO (solo botón de ver) -->
+            <td>
+                <div class="buttons is-centered">
+                    <a href="index.php?vista=product_category&_id=' . $row['categoria_id'] . '" class="button is-small is-link is-light view-icon">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                </div>
+            </td>
+
+            <!-- Columna de ACCIONES -->
+            <td>
+                <div class="buttons is-centered">
+                    <a href="index.php?vista=category_update&category_id_up=' . $row['categoria_id'] . '" class="button is-small is-info is-light edit-icon">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                    <a href="' . $url . $page_list . '&category_id_del=' . $row['categoria_id'] . '" class="button is-small is-danger is-light confirm-delete-category delete-icon">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </div>
+            </td>
+        </tr>
+    ';
+    $counter++;
+}
+
+
         $final_pager = $counter - 1;
 
     } else {

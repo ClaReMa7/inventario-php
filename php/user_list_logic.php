@@ -45,25 +45,29 @@
         $initial_pager = $pageStart + 1;
         foreach ($rows as $row) {
             $user_table .= '
-                <tr class="has-text-centered" >
-					<td>'.$counter.'</td>
-                    <td>'.$row['usuario_nombre'].'</td>
-                    <td>'.$row['usuario_apellido'].'</td>
-                    <td>'.$row['usuario_usuario'].'</td>
-                    <td>'.$row['usuario_email'].'</td>
+                <tr class="has-text-centered">
+                    <td>' . $counter . '</td>
+                    <td>' . $row['usuario_nombre'] . '</td>
+                    <td>' . $row['usuario_apellido'] . '</td>
+                    <td>' . $row['usuario_usuario'] . '</td>
+                    <td>' . $row['usuario_email'] . '</td>
                     <td>
-                        <a href="index.php?vista=user_update&user_id_up='.$row['usuario_id'].'" class="has-text-info icon-link edit-icon"><i class="fa-solid fa-user-pen"></i></a>
-                    </td>
-                    <td>
-                        <a href="'.$url_list.$page_list.'&user_id_del='.$row['usuario_id'].'"
-                        class="has-text-danger icon-link delete-icon confirm-delete-user">
-                        <i class="fa-solid fa-trash"></i>
-                        </a>
+                        <div class="buttons is-centered">
+                            <a href="index.php?vista=user_update&user_id_up=' . $row['usuario_id'] . '" 
+                                class="button is-small is-info is-light edit-icon">
+                                <i class="fa-solid fa-user-pen"></i>
+                            </a>
+                            <a href="' . $url_list . $page_list . '&user_id_del=' . $row['usuario_id'] . '" 
+                                class="button is-small is-danger is-light confirm-delete-user delete-icon">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </div>
                     </td>
                 </tr>
             ';
             $counter++;
-        }
+}
+
         $final_pager = $counter - 1;
 
     } else {
