@@ -10,8 +10,13 @@ $id = limpiar_cadena($id);
 		<h1 class="title">Mi cuenta</h1>
 		<h2 class="subtitle">Actualizar datos de cuenta</h2>
 	<?php } else { ?>
-		<h1 class="title">Usuarios</h1>
-		<h2 class="subtitle">Actualizar usuario</h2>
+		<div class="container is-fluid mb-4">
+    <div class="has-text-left">
+        <h1 class="title is-2 has-text-weight-bold has-text-info">Usuario</h1>
+        <h2 class="subtitle is-5 has-text-grey">Actualizar usuario</h2>
+        <div class="divider-aligned-left "></div>
+    </div>
+</div>
 	<?php } ?>
 </div>
 
@@ -109,7 +114,7 @@ $id = limpiar_cadena($id);
 				</div>
 			</div>
 			<p class="has-text-centered">
-				<button type="submit" class="button is-success is-rounded">Actualizar</button>
+				<button type="submit" class="button is-primary is-rounded button-custom">Actualizar</button>
 			</p>
 		</form>
 	<?php

@@ -52,7 +52,7 @@
                     <a href="index.php?vista=user_update&user_id_up=<?php echo $_SESSION['id']; ?>" class="button button-custom is-primary is-rounded">
                         Mi Cuenta
                     </a>
-                    <a href="index.php?vista=logout" class="button button-custom button-exit is-info is-rounded"
+                    <a href="index.php?vista=logout" class="button button-custom  is-info is-rounded"
                     >
                         Salir
                     </a>

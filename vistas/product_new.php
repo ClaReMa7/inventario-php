@@ -1,11 +1,33 @@
 <div class="container is-fluid mb-6">
-    <h1 class="title">Productos</h1>
-    <h2 class="subtitle">Nuevo producto</h2>
+    <div class="has-text-left">
+        <h1 class="title is-2 has-text-weight-bold has-text-info">Productos</h1>
+        <h2 class="subtitle is-5 has-text-grey">Nuevo producto</h2>
+        <div class="divider-aligned-left "></div>
+    </div>
 </div>
 
 <div class="container pb-6 pt-6">
     <?php
     require_once './php/main.php';
+
+    // Mostrar mensaje si existe
+        if (isset($_SESSION['mensaje']) && isset($_SESSION['mensaje']['tipo'])) {
+            $tipo = $_SESSION['mensaje']['tipo'];
+            $titulo = $_SESSION['mensaje']['titulo'];
+            $contenido = $_SESSION['mensaje']['contenido'];
+
+            echo '
+                <div class="columns is-centered">
+                    <div class="column is-half">
+                        <div class="notification '.$tipo.' is-light has-text-centered">
+                            <strong>'.strtoupper($titulo).'</strong><br>
+                            '.$contenido.'
+                        </div>
+                    </div>
+                </div>
+                ';
+                unset($_SESSION['mensaje']); // Limpiamos el mensaje después de mostrarlo
+        }
     ?>
 
     <div class="form-rest mb-6 mt-6"></div>
@@ -15,7 +37,7 @@
             <div class="column">
                 <div class="control">
                     <label>Código de barra</label>
-                    <input class="input" type="text" name="producto_codigo" pattern="[a-zA-Z0-9- ]{1,70}" maxlength="70"
+                    <input class="input" type="text" name="producto_codigo" pattern="[\-a-zA-Z0-9 ]{1,70}" maxlength="70"
                         required>
                 </div>
             </div>
@@ -23,7 +45,7 @@
                 <div class="control">
                     <label>Nombre</label>
                     <input class="input" type="text" name="producto_nombre"
-                        pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ().,$#\-\/ ]{1,70}" maxlength="70" required>
+                        pattern="[\-a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,50}" maxlength="50" required>
                 </div>
             </div>
         </div>

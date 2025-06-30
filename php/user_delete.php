@@ -35,7 +35,6 @@
                 'contenido' => 'No hemos podido eliminar el usuario, por favor intenta nuevamente.'
             ];
             }
-            $delete_user = null;
 
         } else {
             $_SESSION['mensaje'] = [
@@ -45,7 +44,6 @@
             ];
 
         }
-        //$chaeck_products = null;
 
     } else {
         $_SESSION['mensaje'] = [
@@ -54,7 +52,10 @@
         'contenido' => 'El usuario que intentas eliminar no existe.'
         ];
     }
-    //$check_user = null;
+    
+    // Limpiar conexiones
+    if (isset($delete_user)) $delete_user = null;
+    $check_user= null;
 
     // Redireccionando al listado de usuarios
     header("Location: index.php?vista=user_list");

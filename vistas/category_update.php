@@ -1,6 +1,9 @@
 <div class="container is-fluid mb-6">
-    <h1 class="title">Categorías</h1>
-    <h2 class="subtitle">Actualizar categoría</h2>
+    <div class="has-text-left">
+        <h1 class="title is-2 has-text-weight-bold has-text-info">Categorías</h1>
+        <h2 class="subtitle is-5 has-text-grey">Actualizar categoría</h2>
+        <div class="divider-aligned-left "></div>
+    </div>
 </div>
 
 <div class="container pb-6 pt-6">
@@ -13,32 +16,32 @@
     $id = isset($_GET['category_id_up']) ? $_GET['category_id_up'] : 0;
     $id = limpiar_cadena($id);
 
-
+    /*== Verificando categoría ==*/
 	$check_category = db_connection();
 	$check_category = $check_category->prepare("SELECT * FROM categoria WHERE categoria_id = :id");
 	$check_category->execute([':id' => $id]);
 
 	if ($check_category->rowCount() > 0) {
-		$dates = $check_category->fetch();
+		$datos = $check_category->fetch();
 	?>
     <div class="form-rest mb-6 mt-6"></div>
     <form action="./php/update_category.php" method="POST" class="FormularioAjax" autocomplete="off">
 
-        <input type="hidden" name="categoria_id" value="<?php echo $dates['categoria_id'];?>" required>
+        <input type="hidden" name="categoria_id" value="<?php echo $datos['categoria_id'];?>" required>
 
         <div class="columns">
             <div class="column">
                 <div class="control">
                     <label>Nombre</label>
                     <input class="input" type="text" name="categoria_nombre" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{4,50}"
-                        maxlength="50" required value="<?php echo $dates['categoria_nombre'];?>">
+                        maxlength="50" required value="<?php echo $datos['categoria_nombre'];?>">
                 </div>
             </div>
             <div class="column">
                 <div class="control">
                     <label>Ubicación</label>
                     <input class="input" type="text" name="categoria_ubicacion"
-                        pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{5,150}" maxlength="150" value="<?php echo $dates['categoria_ubicacion'];?>" >
+                        pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{5,150}" maxlength="150" value="<?php echo $datos['categoria_ubicacion'];?>" >
                 </div>
             </div>
         </div>

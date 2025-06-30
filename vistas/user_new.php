@@ -1,7 +1,10 @@
 <!-- Formulario de Registro -->
-<div class="container ">
-    <h1 class="title">Usuarios</h1>
-    <h2 class="subtitle">Nuevo usuario</h2>
+<div class="container is-fluid mb-6">
+    <div class="has-text-left">
+        <h1 class="title is-2 has-text-weight-bold has-text-info">Usuario</h1>
+        <h2 class="subtitle is-5 has-text-grey">Nuevo usuario</h2>
+        <div class="divider-aligned-left "></div>
+    </div>
 </div>
 
 <div class="form-rest mb-6 mt-6"></div>

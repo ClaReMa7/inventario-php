@@ -1,6 +1,9 @@
 <div class="container is-fluid mb-6">
-    <h1 class="title">Productos</h1>
-    <h2 class="subtitle">Lista de productos</h2>
+    <div class="has-text-left">
+        <h1 class="title is-2 has-text-weight-bold has-text-info">Productos</h1>
+        <h2 class="subtitle is-5 has-text-grey">Lista de productos</h2>
+        <div class="divider-aligned-left "></div>
+    </div>
 </div>
 
 <div class="container pb-6 pt-6">
@@ -17,7 +20,7 @@
             echo '
                 <div class="columns is-centered">
                     <div class="column is-half">
-                        <div class="notification '.$tipo.' is-info is-light has-text-centered">
+                        <div class="notification '.$tipo.' is-light has-text-centered">
                             <strong>'.strtoupper($titulo).'</strong><br>
                             '.$contenido.'
                         </div>
@@ -25,6 +28,12 @@
                 </div>
                 ';
                 unset($_SESSION['mensaje']); // Limpiamos el mensaje después de mostrarlo
+        }
+
+         // Eliminar producto
+        if (isset($_GET['product_id_del'])) {
+            require_once "./php/product_delete.php";
+
         }
 
         // Paginación de la tabla

@@ -1,10 +1,11 @@
 :root {
-    --mi-color1: var(--bulma-primary);
-    --mi-color2: var(--bulma-info);
-    --mi-color3: var(--bulma-link);
-    --mi-color4: var(--bulma-info-90);
-    --mi-color5: var(--bulma-danger);
-    --mi-color6: var(--bulma-warning);
+    --color1: var(--bulma-primary);
+    --color2: var(--bulma-info);
+    --color3: var(--bulma-link);
+    --color4: var(--bulma-info-90);
+    --color5: var(--bulma-danger);
+    --color6: var(--bulma-warning);
+    --color7: var(--bulma-white-ter);
 }
 
 body, html {
@@ -16,7 +17,7 @@ body, html {
 
 /*navbar*/
 html body .navbar .navbar-link::after {
-    border-color:var(--bulma-info) !important;
+    border-color:var(--color1) !important;
 }
 
 .navbar-burger {
@@ -24,7 +25,7 @@ html body .navbar .navbar-link::after {
     box-shadow: none;
 }
 .navbar-burger span {
-    background-color: var(--bulma-info);
+    background-color: var(--color2);
 }
 
 .navbar-burger:hover {
@@ -71,7 +72,7 @@ html body .navbar .navbar-link::after {
     border-radius: 9999px; /* is-rounded */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: all 0.2s ease;
-    color: white;
+    color: var(--color7);
 }
 
 .button-custom:hover {
@@ -80,7 +81,7 @@ html body .navbar .navbar-link::after {
 }
 
 .button-cancel {
-    background-color: var(--mi-color2);
+    background-color: var(--color2);
     border-radius: 20px;
     font-weight: 500;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -102,6 +103,19 @@ html body .navbar .navbar-link::after {
     background-color: hsl(274, 100%, 70%);
 }
 
+.btn_img_delete {
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    border-radius: 9999px; /* is-rounded */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+}
+
+.btn_img_delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.20);
+}
+
 .input {
     background-color: #ffffff;
     border-radius: 8px;
@@ -113,9 +127,9 @@ html body .navbar .navbar-link::after {
 }
 
 .input:focus {
-    border-color: var(--mi-color1);
+    border-color: var(--color1);
     box-shadow: 0 0 0 3px rgba(0, 209, 178, 0.2);
-    outline: none;
+    outline: none ! important; 
 }
 
 .label {
@@ -124,7 +138,7 @@ html body .navbar .navbar-link::after {
 }
 
 .control.has-icons-right .icon.is-right i {
-    color: var(--mi-color2);
+    color: var(--color2);
 }
 
 /* Centrado y espaciado botones */
@@ -139,9 +153,7 @@ html body .navbar .navbar-link::after {
 }
 
 .icon-link {
-    font-size: 1.2em;
-    margin: 0 0.3rem;
-    transition: transform 0.2s ease, color 0.2s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
     display: inline-block;
 }
 
@@ -150,8 +162,16 @@ html body .navbar .navbar-link::after {
     cursor: pointer;
 }
 
-.fa-eye{
+.fa-user-pen, .fa-pen {
+    color: var(--color2) !important;
+}
+
+.fa-eye, .fa-image {
     color: hsl(274, 100%, 70%);
+}
+
+.text-view-product {
+    color:  hsl(274, 100%, 70%);
 }
 
 .button-reload {
@@ -175,10 +195,100 @@ html body .navbar .navbar-link::after {
 }
 
 .select:not(.is-multiple)::after {
-    border-color: var(--mi-color2) !important; /* Cambio color flecha desplegable categorias */
+    border-color: var(--color1) !important; /* Cambio color flecha desplegable categorias */
 }
 
 .select select:focus {
-    border-color: var(--mi-color1);   /* Color personalizado del borde al enfocar */
+    border-color: var(--color1);   /* Color personalizado del borde al enfocar */
     box-shadow: 0 0 0 3px rgba(0, 209, 178, 0.2);
 }
+
+/* tabla reducida listar usuarios/categorias*/
+.tabla-reducida {
+    max-width:1200px;
+    margin: auto;
+}
+
+/* Centrar contenido de las celdas de la tabla productos*/
+.table td,
+.table th {
+    vertical-align: middle;
+}
+
+/* animacion notificación */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Estilos adicionales vista productos por categoria y encabezado de usuarios, categorias y productos*/
+.text-button {
+        transition: all 0.3s ease;
+    }
+    .text-button:hover {
+        transform: translateX(5px);
+    }
+    .divider-container {
+        text-align: left;
+    }
+    .divider-aligned-left {
+        height: 2px;
+        background: linear-gradient(to right, #00d1b2, transparent);
+        margin: 1rem 0;
+        width: 200px;
+        max-width: 100%;
+        display: block;
+        margin-right: auto;
+        margin-left: 0;
+    }
+    .card {
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        height: 100%;
+    }
+
+    .card-content {
+        padding: 1rem;
+    }
+
+    .menu {
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+
+    .menu-list a.is-active {
+        background-color: hsl(274, 100%, 70%);
+        color: white;
+    }
+
+    .box {
+        border-radius: 8px;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        min-height: 100%;
+    }
+
+    /* Estilos adicionales vista producto-image*/
+
+    .card-image {
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        border: 1px solid #f5f5f5;
+    }
+    .file.is-boxed .file-cta {
+        flex-direction: column;
+        height: auto;
+        padding: 1.5em;
+        border: 2px dashed #dbdbdb;
+        transition: all 0.3s ease;
+    }
+    .file.is-boxed .file-cta:hover {
+        border-color: #00d1b2;
+        background-color: #f9f9f9;
+    }
+    .file.is-boxed .file-icon {
+        font-size: 1.5em;
+        margin-bottom: 0.5em;
+        color: #00d1b2;
+    }
+
+    

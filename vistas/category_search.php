@@ -1,6 +1,9 @@
 <div class="container is-fluid mb-6">
-    <h1 class="title">Categorías</h1>
-    <h2 class="subtitle">Buscar categoría</h2>
+    <div class="has-text-left">
+        <h1 class="title is-2 has-text-weight-bold has-text-info">Categorias</h1>
+        <h2 class="subtitle is-5 has-text-grey">Buscar categoría</h2>
+        <div class="divider-aligned-left "></div>
+    </div>
 </div>
 
 <div class="container pb-6 pt-6">

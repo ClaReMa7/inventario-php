@@ -34,7 +34,6 @@
                 'contenido' => 'No hemos podido eliminar la categoria, por favor intenta nuevamente.'
             ];
             }
-            $delete_category= null;
 
         } else {
             $_SESSION['mensaje'] = [
@@ -44,7 +43,6 @@
             ];
 
         }
-        $check_products = null;
 
     } else {
         $_SESSION['mensaje'] = [
@@ -53,7 +51,9 @@
         'contenido' => 'La categoría que intentas eliminar no existe.'
         ];
     }
-    $delete_category = null;
+    
+    if (isset($delete_category)) $delete_category = null;
+    $check_category = null;
 
     // Redireccionando al listado de usuarios
     header("Location: index.php?vista=category_list");

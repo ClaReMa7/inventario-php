@@ -68,4 +68,21 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // Confirmación eliminar PRODUCTO
+        document.querySelectorAll('.confirm-delete-product').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (!confirm('¿Estás seguro de eliminar este PRODUCTO?')) {
+                    e.preventDefault();
+                }
+            });
+        });
+
+        //Notificaciones autocerradas con animación
+        setTimeout(() => {
+        document.querySelectorAll('.notification').forEach(noti => {
+            noti.classList.add('fade-out');
+            setTimeout(() => noti.remove(), 500); // se borra luego de la animación
+        });
+    }, 4000); 
+
     });
